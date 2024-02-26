@@ -45,7 +45,12 @@ func isValidNHSNumber(n int) bool {
 		leadingWeightedSum += digit * (10 - i)
 	}
 
-	return 11-(leadingWeightedSum%11) == r
+	checkDigit := 11 - (leadingWeightedSum % 11)
+	if checkDigit == 11 {
+		return 0 == r
+	} else {
+		return checkDigit == r
+	}
 }
 
 var rootCmd = &cobra.Command{
